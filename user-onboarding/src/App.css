@@ -1,0 +1,174 @@
+.App {
+    width: 80%;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 500px;
+}
+
+input,
+select {
+    margin-top: 32px;
+    padding: 0.5rem;
+    font-size: 16px;
+    width: 100%;
+    display: block;
+    color: #000;
+    border: 2px solid #d3d3d3;
+    border-radius: 5px;
+}
+
+.errors {
+    color: red;
+}
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-top: 32px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide default checkbox */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Styles for custom checkbox */
+.checkmark {
+    position: absolute;
+    top: -3px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    box-shadow: 0px 1px 3px 1px #d3d3d3;
+    border-radius: 5px;
+    border: 1px solid #d3d3d3;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #5eb7b3;
+}
+
+/* Create the checkmark (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Styles for checkmark */
+.checkbox-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.role-container {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.role {
+    display: block;
+    font-size: 16px;
+    font-family: sans-serif;
+    color: #444;
+    line-height: 1.3;
+    padding: 0.6em 1.4em 0.5em 0.8em;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    margin-top: 32px;
+    border: 2px solid #d3d3d3;
+    box-shadow: 0px 1px 3px 1px #d3d3d3;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+}
+
+option {
+    padding: 0.6em 1.4em 0.5em 0.8em;
+}
+
+svg {
+    margin-top: 32px;
+    position: relative;
+    top: 6px;
+    right: 40px;
+    font-size: 2rem;
+    color: #14586b;
+}
+
+button {
+    max-width: 150px;
+    margin: 32px 0;
+    padding: 12px 20px;
+    border-style: none;
+    border-radius: 5px;
+    background-color: #14586b;
+    box-shadow: 0px 1px 3px 1px #d3d3d3;
+    font-size: 17px;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}
+
+ul {
+    width: 300px;
+    height: auto;
+    line-height: 1.5;
+    list-style-type: none;
+    background-color: #eee;
+    box-shadow: 0px 1px 3px 1px #d3d3d3;
+    border-radius: 5px;
+    border: 1px solid #d3d3d3;
+    padding: 10px 25px;
+    box-sizing: border-box;
+}
