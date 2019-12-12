@@ -120,3 +120,16 @@ button:disabled {
     opacity: 0.5;
     cursor: not-allowed !important;
 }
+
+ul {
+    width: 300px;
+    height: auto;
+    line-height: 1.5;
+    list-style-type: none;
+    background-color: #eee;
+    box-shadow: 0px 1px 3px 1px #d3d3d3;
+    border-radius: 5px;
+    border: 1px solid #d3d3d3;
+    padding: 10px 25px;
+    box-sizing: border-box;
+}
