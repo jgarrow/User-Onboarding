@@ -3,11 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-// Name
-// Email
-// Password
-// Terms of Service (checkbox)
-// A Submit button to send our form data to the server
+import { IoIosArrowDown } from "react-icons/io";
 
 const UserForm = ({ values, errors, touched, status, isSubmitting }) => {
     const [users, setUsers] = useState([]);
@@ -32,6 +28,11 @@ const UserForm = ({ values, errors, touched, status, isSubmitting }) => {
                 {touched.email && errors.email && (
                     <p className="errors">{`* ${errors.email}`}</p>
                 )}
+                {users.find(user => user.email === values.email) && (
+                    <p className="errors">
+                        * There is already a user with this email
+                    </p>
+                )}
 
                 <Field
                     type="password"
@@ -41,6 +42,16 @@ const UserForm = ({ values, errors, touched, status, isSubmitting }) => {
                 {touched.password && errors.password && (
                     <p className="errors">{`* ${errors.password}`}</p>
                 )}
+
+                <div className="role-container">
+                    <Field as="select" className="role" name="role">
+                        <option disabled>Select a role</option>
+                        <option value="student">Student</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="business">Business/Organization</option>
+                    </Field>
+                    <IoIosArrowDown />
+                </div>
 
                 <label className="checkbox-container">
                     <Field
@@ -79,7 +90,8 @@ const FormikForm = withFormik({
             name: props.name || "",
             email: props.email || "",
             password: props.password || "",
-            acceptedTerms: props.acceptedTerms || false
+            acceptedTerms: props.acceptedTerms || false,
+            role: props.role || "Select a role"
         };
     },
     validationSchema: Yup.object().shape({
@@ -90,7 +102,10 @@ const FormikForm = withFormik({
             .required(),
         acceptedTerms: Yup.boolean()
             .required()
-            .oneOf([true], "You must accept the terms and conditions.")
+            .oneOf([true], "You must accept the terms and conditions."),
+        role: Yup.string()
+            .required()
+            .oneOf(["student", "teacher", "business"], "Invalid role")
     }),
     handleSubmit(values, { setStatus, resetForm }) {
         console.log("submitting", values);
